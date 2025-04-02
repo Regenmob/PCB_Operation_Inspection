@@ -1,0 +1,138 @@
+{
+    "type_of_model": "SSD",
+    "converter_type": "DETECTION",
+    "model_parameters": {
+        "result_based_confidence_threshold": true,
+        "confidence_threshold": 0.5249999761581421,
+        "nms_iou_threshold": 0.5,
+        "max_num_detections": 0,
+        "use_ellipse_shapes": false,
+        "labels": {
+            "label_tree": {
+                "type": "tree",
+                "directed": true,
+                "nodes": [],
+                "edges": []
+            },
+            "label_groups": [
+                {
+                    "_id": "67eb8704377c7bbab5f83fba",
+                    "name": "labels",
+                    "label_ids": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "relation_type": "EXCLUSIVE"
+                }
+            ],
+            "all_labels": {
+                "0": {
+                    "_id": "0",
+                    "name": "hole",
+                    "color": {
+                        "red": 191,
+                        "green": 176,
+                        "blue": 238,
+                        "alpha": 255
+                    },
+                    "hotkey": "",
+                    "domain": "DETECTION",
+                    "creation_date": "2025-04-01T06:26:12.207000",
+                    "is_empty": false,
+                    "is_anomalous": false
+                },
+                "1": {
+                    "_id": "1",
+                    "name": "LED_OFF",
+                    "color": {
+                        "red": 187,
+                        "green": 84,
+                        "blue": 189,
+                        "alpha": 255
+                    },
+                    "hotkey": "",
+                    "domain": "DETECTION",
+                    "creation_date": "2025-04-01T06:26:12.207000",
+                    "is_empty": false,
+                    "is_anomalous": false
+                },
+                "2": {
+                    "_id": "2",
+                    "name": "LED_ON",
+                    "color": {
+                        "red": 252,
+                        "green": 18,
+                        "blue": 219,
+                        "alpha": 255
+                    },
+                    "hotkey": "",
+                    "domain": "DETECTION",
+                    "creation_date": "2025-04-01T06:26:12.207000",
+                    "is_empty": false,
+                    "is_anomalous": false
+                },
+                "3": {
+                    "_id": "3",
+                    "name": "MOTOR_ON",
+                    "color": {
+                        "red": 19,
+                        "green": 24,
+                        "blue": 53,
+                        "alpha": 255
+                    },
+                    "hotkey": "",
+                    "domain": "DETECTION",
+                    "creation_date": "2025-04-01T06:26:12.207000",
+                    "is_empty": false,
+                    "is_anomalous": false
+                },
+                "4": {
+                    "_id": "4",
+                    "name": "MOTOR_OFF",
+                    "color": {
+                        "red": 179,
+                        "green": 203,
+                        "blue": 148,
+                        "alpha": 255
+                    },
+                    "hotkey": "",
+                    "domain": "DETECTION",
+                    "creation_date": "2025-04-01T06:26:12.207000",
+                    "is_empty": false,
+                    "is_anomalous": false
+                }
+            }
+        }
+    },
+    "tiling_parameters": {
+        "visible_in_ui": true,
+        "type": "PARAMETER_GROUP",
+        "enable_tiling": false,
+        "enable_tile_classifier": false,
+        "enable_adaptive_params": true,
+        "tile_size": 400,
+        "tile_overlap": 0.2,
+        "tile_max_number": 1500,
+        "tile_ir_scale_factor": 1.0,
+        "tile_sampling_ratio": 1.0,
+        "object_tile_ratio": 0.03,
+        "header": "Tiling Parameters",
+        "description": "Tiling Parameters",
+        "_ParameterGroup__metadata_overrides": {},
+        "groups": [],
+        "parameters": [
+            "enable_adaptive_params",
+            "enable_tile_classifier",
+            "enable_tiling",
+            "object_tile_ratio",
+            "tile_ir_scale_factor",
+            "tile_max_number",
+            "tile_overlap",
+            "tile_sampling_ratio",
+            "tile_size"
+        ]
+    }
+}
