@@ -5,6 +5,7 @@
 
 ## High Level Design
 
+```mermaid
 graph TD
     A[Start] --> B[PCB 사진을 CVAT로 학습]
     B --> C[학습된 모델로 모터와 LED 상태 추적]
@@ -16,7 +17,7 @@ graph TD
     G --> I[상태 출력]
     H --> I[상태 출력]
     I --> J[End]
-
+```
 
 ## Clone code
 
