@@ -1,0 +1,5 @@
+2025-04-04 16:29:26,369 | INFO : Loading OpenVINO OTXDetectionTask
+2025-04-04 16:29:26,372 | INFO : Confidence Threshold: 0.4749999940395355
+2025-04-04 16:29:26,770 | INFO : OpenVINO task initialization completed
+2025-04-04 16:29:26,770 | INFO : Deploying the model
+2025-04-04 16:29:26,790 | INFO : Deploying completed
