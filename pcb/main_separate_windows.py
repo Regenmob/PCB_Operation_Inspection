@@ -1,4 +1,5 @@
 import cv2
+import os
 import time
 import json
 import numpy as np
@@ -10,9 +11,31 @@ from visualizer import draw_boxes, draw_status, draw_counts  # 화면에 그려�
 VIDEO_PATH = "input_video.mp4"
 cap = cv2.VideoCapture(VIDEO_PATH)
 
-# 📸 실시간 캠 사용하려면 아래 주석 해제하세요
+#비디오 파일을 연다
+cap = cv2.VideoCapture(VIDEO_PATH)
+
+# # 📸 실시간 캠 사용하려면 아래 주석 해제하세요
 # cap = cv2.VideoCapture(0)
 
+# # 카메라 인풋 포멧을 MJPG 로 설정
+# fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+# if not cap.set(cv2.CAP_PROP_FOURCC, fourcc):
+#     print("Failed to set FOURCC to MJPG.")
+
+# # 카메라 해상도 설정
+# cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+# cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+# print(f"Resolution = {cap.get(cv2.CAP_PROP_FRAME_WIDTH)}x{cap.get(cv2.CAP_PROP_FRAME_HEIGHT)},FPS = {cap.get(cv2.CAP_PROP_FPS)}")
+
+# 창 우선순위
+cv2.imshow("Status", np.zeros((200, 300, 3), dtype=np.uint8))
+time.sleep(0.3)
+os.system("wmctrl -r 'Status' -b add,above")
+
+
+cv2.imshow("Counts", np.zeros((200, 300, 3), dtype=np.uint8))
+time.sleep(0.3)
+os.system("wmctrl -r 'Counts' -b add,above")
 
 # 감지할 라벨(종류)
 class_labels = ["m-on", "m-off", "l-on", "l-off", "not"]
@@ -32,8 +55,6 @@ status_color = (255, 255, 0)  # 노란색
 status_start_time = 0
 status_hold_duration = 3  # 상태 유지 시간 (초)
 
-# 비디오 파일을 연다
-cap = cv2.VideoCapture(VIDEO_PATH)
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -117,24 +138,35 @@ while cap.isOpened():
     count_img = draw_counts(counter.class_counts)
 
     # 창 배치 조정
-    cv2.namedWindow("Detection")
-    cv2.moveWindow("Detection", 100, 100)
+    cv2.namedWindow("Detection", cv2.WINDOW_NORMAL | cv2.WINDOW_GUI_NORMAL)
+    cv2.setWindowProperty("Detection", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    # cv2.moveWindow("Detection", 0, 0)
 
-    cv2.namedWindow("Status")
-    cv2.moveWindow("Status", 820, 100)
+    cv2.namedWindow("Status", cv2.WINDOW_NORMAL | cv2.WINDOW_GUI_NORMAL)
+    cv2.moveWindow("Status", 1600, 100)
 
-    cv2.namedWindow("Counts")
-    cv2.moveWindow("Counts", 820, 320)
+    cv2.namedWindow("Counts", cv2.WINDOW_NORMAL | cv2.WINDOW_GUI_NORMAL)
+    cv2.moveWindow("Counts", 1600, 380)
 
     # 각각의 창에 따로 보여줌
     cv2.imshow("Detection", cv2.cvtColor(result_img, cv2.COLOR_RGB2BGR))  # 박스 보여줌
     cv2.imshow("Status", decision_img)  # PASS/NONPASS
     cv2.imshow("Counts", count_img)  # 몇 번 감지됐는지
 
+    # 각각의 창 Size
+    # WINDOW_W1 = 1800
+    # WINDOW_H1 = 800
+    WINDOW_W2 = 352
+    WINDOW_H2 = 240
+
+    # cv2.resizeWindow("Detection", WINDOW_W1, WINDOW_H1)
+    cv2.resizeWindow("Status", WINDOW_W2, WINDOW_H2)
+    cv2.resizeWindow("Counts", WINDOW_W2, WINDOW_H2)
+
     # q를 누르면 종료
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
-
+    
 # 영상 끝나면 창 닫기
 cap.release()
 cv2.destroyAllWindows()

@@ -114,6 +114,9 @@ cap = cv2.VideoCapture(0)  # ← 0번 웹캠을 사용
 - OpenCV >= 4.5
 - OpenVINO >= 2023.0
 - OS: Windows / Ubuntu (x86_64)
+- sudo apt update
+  sudo apt install wmctrl
+  (os.system("wmctrl -r ... -b add,above"): 해당 창을 최상단(TopMost)으로 설정합니다.)
 
 ---
 
