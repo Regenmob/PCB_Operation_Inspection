@@ -117,6 +117,7 @@ cap = cv2.VideoCapture(0)  # ← 0번 웹캠을 사용
 - sudo apt update
   sudo apt install wmctrl
   (os.system("wmctrl -r ... -b add,above"): 해당 창을 최상단(TopMost)으로 설정합니다.)
+- sudo apt install v4l-utils (cam의 해상도 설정을 위해 필요)
 
 ---
 

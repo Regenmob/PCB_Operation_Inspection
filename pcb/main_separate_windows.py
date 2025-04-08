@@ -134,6 +134,7 @@ while cap.isOpened():
     result_img = draw_boxes(
         frame.copy(), combined, class_labels, threshold=CONFIDENCE_THRESHOLD
     )
+    result_img = cv2.cvtColor(result_img, cv2.COLOR_RGB2BGR)
     decision_img = draw_status(status_text, status_color)
     count_img = draw_counts(counter.class_counts)
 
@@ -149,7 +150,7 @@ while cap.isOpened():
     cv2.moveWindow("Counts", 1600, 380)
 
     # 각각의 창에 따로 보여줌
-    cv2.imshow("Detection", cv2.cvtColor(result_img, cv2.COLOR_RGB2BGR))  # 박스 보여줌
+    cv2.imshow("Detection", cv2.resize(result_img, dsize=(1920, 1080)))  # 박스 보여줌
     cv2.imshow("Status", decision_img)  # PASS/NONPASS
     cv2.imshow("Counts", count_img)  # 몇 번 감지됐는지
 
